@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class Clinic {
 
-    static private Integer comptaCode = 1; //El proper code a assignar
+    static private Integer comptaCode = 1; //Contador de la clase 
     private Integer code;
     private String name;
     private String address;
@@ -25,11 +25,12 @@ public class Clinic {
     private Integer comptaTracks = 0;
 
     
-   /* public Clinic(Integer code, String name, String address) {
-        this.code = code;
+   public Clinic( String name, String address) {
+       
+        this.code = Clinic.getComptaCode(); //Estaamos asignando un numero XD
         this.name = name;
         this.address = address;
-    } */ 
+    } 
 
     /*
     TODO Constructor
@@ -44,18 +45,49 @@ public class Clinic {
     */
     
     public static Clinic addClinic() {
-    /*
-    TODO 
-    Paràmetres: sense
-    Accions:
-    - demanar les dades per consola per crear una nova clínica (són les dades simples que demana el constructor)
-    Retorneu: la clínica creada
-
-    */ 
+        
+        Scanner teclado = new Scanner (System.in);
+        String nomClinica;
+        String adrecaClinica;
+        System.out.println("nom de la clinica");
+        nomClinica=teclado.next();
+        System.out.println("adreça de la clinica");
+        adrecaClinica= teclado.next();
+        
+        return new Clinic(nomClinica,adrecaClinica);
+       
+        /*
+        TODO
+        Paràmetres: sense
+        Accions:
+        - demanar les dades per consola per crear una nova clínica (són les dades simples que demana el constructor)
+        Retorneu: la clínica creada
+         */ 
     }
 
     
     public void updateClinic() {
+        
+      Scanner teclado = new Scanner (System.in);
+      String nomClinica;
+      String adrecaClinica;
+      System.out.println ("\nNom de la clinica: " + this.getName());
+      System.out.println("\nNom de la adreça: " + this.getAddress());
+      System.out.println ("Nuevo nombre de la clinica");
+      nomClinica=teclado.next();
+      System.out.println ("Nuevo direccion");
+      adrecaClinica=teclado.next();
+      
+      setAddress(adrecaClinica);
+      setName(nomClinica);
+      
+      System.out.println("\nClinica Actualizada! " + this.getCode() + " " + this.getName() + " " + this.getAddress() );
+      
+      
+
+      
+      
+        
     /*
     TODO 
     Paràmetres: sense
@@ -77,6 +109,10 @@ public class Clinic {
      */
    
     public void addDoctor() {
+        
+        this.doctors[this.comptaDoctors] = Doctor.addDoctor(); //si podemos ver el codigo de addDoctor
+                                                                //click derecho, navigator, go to source
+        this.comptaDoctors ++;
     /*
     TODO 
     Paràmetres: sense
@@ -304,8 +340,9 @@ public class Clinic {
         return comptaTracks;
     }
 
-    public static void setComptaCode(Integer comptaCode) {
-        Clinic.comptaCode = comptaCode;
+    public static void setComptaCode() {
+        Clinic.comptaCode++;  //para usarlo como un contandor 
+                              // cadavez que creemos una clinic, generara un codigo nuevo.
     }
 
     public void setCode(Integer code) {

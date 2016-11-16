@@ -5,7 +5,9 @@
  */
 package principal;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.logging.Logger;
 
 /**
@@ -25,7 +27,14 @@ public class Doctor {
      */
     /*
     TODO Mètodes accessors
-     */    
+     */  
+
+    public Doctor(String nif, String name, String lastname) {
+        this.nif = nif;
+        this.name = name;
+        this.lastname = lastname;
+    }
+    
 
     public void setNif(String nif) {
         this.nif = nif;
@@ -54,6 +63,19 @@ public class Doctor {
     }
 
     public static Doctor addDoctor() {
+        
+         Scanner teclado = new Scanner (System.in);
+        String nif;
+        String name;
+        String lastname;
+        System.out.println("Introduce el NIF del Doctor");
+        nif=teclado.next();
+        System.out.println("Introduce el nombre del Doctor");
+        name= teclado.next();
+        System.out.println("Introduce el apellido del Doctor");
+        lastname= teclado.next();
+        
+        return new Doctor(nif, name, lastname);
     /*
     TODO 
     Paràmetres: sense
@@ -67,6 +89,32 @@ public class Doctor {
     TODO
     */
     public void updateDoctor() {
+        
+        
+      Scanner teclado = new Scanner (System.in);
+      String nif;
+      String name;
+      String lastname;
+    
+      System.out.println ("\nNif Doctor: " + this.getNif());
+      System.out.println("\nNom del Doctor: " + this.getName());
+      System.out.println("\nApellido del Doctor: " + this.getLastname());
+      
+      System.out.println ("NIF actualizado");
+      nif=teclado.next();
+      System.out.println ("Nombre actualizado");
+      name=teclado.next();
+      System.out.println ("NIF actualizado");
+      lastname=teclado.next();
+      
+        setNif(nif);
+        setName(name);
+        setLastname(lastname);
+        
+      
+      System.out.println("\nDoctor Actualizada! " + this.getNif()+ " " + this.getName() + " " + this.getLastname());
+      
+      
     /*
     TODO 
     Paràmetres: sense
