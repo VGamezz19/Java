@@ -64,7 +64,7 @@ public class Doctor {
 
     public static Doctor addDoctor() {
         
-         Scanner teclado = new Scanner (System.in);
+        Scanner teclado = new Scanner (System.in);
         String nif;
         String name;
         String lastname;

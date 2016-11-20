@@ -25,13 +25,8 @@ public class Department {
     private Patient[] patients = new Patient[20];
     private Integer comptaPatients = 0;
     
-    /*TODO 
-    Paràmetres: sense
-    Accions:
-    - demanar les dades per consola per crear un nou departament (són les dades simples que demana el constructor)
-    Retorneu: el departament creat
 
-    */ 
+
 
     public void setCode(String code) {
         this.code = code;
@@ -97,7 +92,16 @@ public class Department {
         return patients;
     }
 
-    /*
+  
+    public Integer getComptaPatients() {
+        return comptaPatients;
+    }
+
+    public Department(String code, String name) {
+        this.code = code;
+        this.name = name;
+        
+       /*
     TODO Constructor
     Paràmetres: codi i nom
     Accions:
@@ -106,12 +110,23 @@ public class Department {
      */
     /*
     TODO Mètodes accessors
-     */
-    public Integer getComptaPatients() {
-        return comptaPatients;
+     */   
     }
+    
+    
 
     public static Department addDepartment() {
+        
+        Scanner teclado = new Scanner (System.in);
+        String code;
+        String name;
+        System.out.println("codigo del nuevo departamento");
+        code=teclado.next();
+        System.out.println("nombre del nuevo departamento");
+        name= teclado.next();
+        
+        return new Department(code,name);
+        
         /*
         TODO
         Paràmetres: sense

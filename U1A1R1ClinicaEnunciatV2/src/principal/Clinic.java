@@ -81,13 +81,7 @@ public class Clinic {
       setAddress(adrecaClinica);
       setName(nomClinica);
       
-      System.out.println("\nClinica Actualizada! " + this.getCode() + " " + this.getName() + " " + this.getAddress() );
-      
-      
-
-      
-      
-        
+      System.out.println("\nClinica Actualizada! " + this.getCode() + " " + this.getName() + " " + this.getAddress() );     
     /*
     TODO 
     Paràmetres: sense
@@ -142,6 +136,11 @@ public class Clinic {
      */
 
     public void addNurse() {
+        
+        
+        this.nurses[this.comptaNurses] = Nurse.addNurse(); //si podemos ver el codigo de addDoctor
+                                                             //click derecho, navigator, go to source
+        this.comptaNurses ++;
     /*
     TODO 
     Paràmetres: sense

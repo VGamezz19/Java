@@ -28,20 +28,24 @@ public class Nurse {
     
     public String getNif() {
         return nif;
-    /*
-    TODO 
-    Paràmetres: sense
-    Accions:
-    - demanar les dades per consola per crear un nou infermer (són les dades que demana el constructor)
-    Retorneu: L'infermer creat
-    */ 
+
     }
 
     public String getName() {
         return name;
     }
 
-    /*
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public Nurse(String nif, String name, String lastname) {
+        this.nif = nif;
+        this.name = name;
+        this.lastname = lastname;
+        
+     /*
     TODO Constructor
     Paràmetres: String nif, String name, String lastname
     Accions:
@@ -49,12 +53,26 @@ public class Nurse {
      */
     /*
     TODO Mètodes accessors
-     */
-    public String getLastname() {
-        return lastname;
+     */        
     }
-
+    
+    
+   
     public static Nurse addNurse() {
+        
+        
+        Scanner teclado = new Scanner (System.in);
+        String nif;
+        String name;
+        String lastname;
+        System.out.println("Introduce el NIF del enfermeo");
+        nif=teclado.next();
+        System.out.println("Introduce el nombre del enfermeo");
+        name= teclado.next();
+        System.out.println("Introduce el apellido del enfermeo");
+        lastname= teclado.next();
+        
+        return new Nurse(nif, name, lastname);
         /*
         TODO
         Paràmetres: sense
@@ -66,6 +84,30 @@ public class Nurse {
 
 
     public void updateNurse() {
+        
+        
+      Scanner teclado = new Scanner (System.in);
+      String nif;
+      String name;
+      String lastname;
+    
+      System.out.println ("\nNif Enferemero: " + this.getNif());
+      System.out.println("\nNom del Enferemero: " + this.getName());
+      System.out.println("\nApellido del Enferemero: " + this.getLastname());
+      
+      System.out.println ("Introduzca NIF actualizado");
+      nif=teclado.next();
+      System.out.println ("Introduzca Nombre actualizado");
+      name=teclado.next();
+      System.out.println ("Introduzca NIF actualizado");
+      lastname=teclado.next();
+      
+        setNif(nif);
+        setName(name);
+        setLastname(lastname);
+        
+      
+      System.out.println("\nDoctor Actualizada! " + this.getNif()+ " " + this.getName() + " " + this.getLastname());
     /*
     TODO 
     Paràmetres: sense

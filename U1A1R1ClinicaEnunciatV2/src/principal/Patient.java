@@ -5,6 +5,7 @@
  */
 package principal;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,6 +16,8 @@ import java.util.Scanner;
  * @author MiguelAngel
  */
 public class Patient {
+
+ 
 
     private String code;
     private String name;
@@ -43,11 +46,6 @@ public class Patient {
     public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
-
-
-    
-
-
     public Integer getAge() {
         Calendar dob = Calendar.getInstance();
         dob.setTime(birthdate);
@@ -59,7 +57,11 @@ public class Patient {
         return age;
     }
 
-    /*
+    public Patient(String code, String name, Date birthdate) {
+        this.code = code;
+        this.name = name;
+        this.birthdate = birthdate;
+      /*
     TODO Constructor
     Paràmetres: String codi, String name, Date birthdate
     Accions:
@@ -69,9 +71,23 @@ public class Patient {
     
     /*
     TODO Mètodes accessors    
-    */
-
+    */    
+    }
+    
     public static Patient addPatient() {
+        
+        Scanner teclado = new Scanner (System.in);
+        String nif;
+        String name;
+        Date birthdate;
+        System.out.println("Introduce el NIF del paciente");
+        nif=teclado.next();
+        System.out.println("Introduce el nombre del paciente");
+        name= teclado.next();
+        System.out.println("Introduce la fecha de nacimiento");
+        birthdate= integer(teclado.next());
+        
+        return new Patient(nif, name, birthdate);
     /*
     TODO 
     Paràmetres: sense
@@ -83,6 +99,26 @@ public class Patient {
 
   
     public void updatePatient() {
+        
+      Scanner teclado = new Scanner (System.in);
+      String codigo;
+      String name;
+      Date birthdate;
+    
+      System.out.println ("\nCodigo del paciente: " + this.getCode());
+      System.out.println("\nNom del Enferemero: " + this.getName());
+      System.out.println("\nfecha de nacimiento: " + this.getBirthdate());
+      
+      System.out.println ("Introduzca CODIGO actualizado");
+      codigo=teclado.next();
+      System.out.println ("Introduzca Nombre actualizado");
+      name=teclado.next();
+      System.out.println ("Introduzca birthdate actualizado");
+      birthdate=teclado.next();
+      
+        setCode(codigo);
+        setName(name);
+        setBirthdate(birthdate);
     /*
     TODO 
     Paràmetres: sense
