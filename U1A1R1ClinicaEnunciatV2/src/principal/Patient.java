@@ -77,17 +77,25 @@ public class Patient {
     public static Patient addPatient() {
         
         Scanner teclado = new Scanner (System.in);
-        String nif;
+        String codigo;
         String name;
-        Date birthdate;
-        System.out.println("Introduce el NIF del paciente");
-        nif=teclado.next();
+        Date birthdate = null;
+        System.out.println("Introduce el codigo del paciente");
+        codigo=teclado.next();
         System.out.println("Introduce el nombre del paciente");
         name= teclado.next();
-        System.out.println("Introduce la fecha de nacimiento");
-        birthdate= integer(teclado.next());
+        System.out.println("Introduce la fecha de nacimiento");  
+        String formatData = "dd/MM/yyyy";
+      
+      
+      try {
+          birthdate = new SimpleDateFormat(formatData).parse(teclado.next());    
+      } catch (Exception e) { 
+        System.out.println ("Error HIREDATE");
+      }
+       return new Patient(codigo, name, birthdate);
         
-        return new Patient(nif, name, birthdate);
+    }    
     /*
     TODO 
     Paràmetres: sense
@@ -95,7 +103,7 @@ public class Patient {
     - demanar les dades per consola per crear una nou pacient (són les dades que demana el constructor)
     Retorneu: El pacient creat
     */ 
-    }
+    
 
   
     public void updatePatient() {
@@ -103,7 +111,7 @@ public class Patient {
       Scanner teclado = new Scanner (System.in);
       String codigo;
       String name;
-      Date birthdate;
+      Date birthdate = null;
     
       System.out.println ("\nCodigo del paciente: " + this.getCode());
       System.out.println("\nNom del Enferemero: " + this.getName());
@@ -113,8 +121,22 @@ public class Patient {
       codigo=teclado.next();
       System.out.println ("Introduzca Nombre actualizado");
       name=teclado.next();
-      System.out.println ("Introduzca birthdate actualizado");
-      birthdate=teclado.next();
+      System.out.println ("Introduzca birthdate actualizado (dd/MM/YYYY)");
+      
+      // pasamos de String a Date. con la funcion de java "SimpleateFormat"
+      // new SimpleDateFormat(en que formato la queremos guardar)
+      //.parse(la string) (en nuestro caso va a ser el Scanner teclaro)
+      //Try {}catch {} se utiliza para poner excepciones en el codigo,
+      //siempre que de algun tipo de error, saltara al catch y ejecutara
+      //lo que tenemos dentro, en mi caso, un mensaje de error.
+      
+      String formatData = "dd/MM/yyyy";
+      
+      try {
+          birthdate = new SimpleDateFormat(formatData).parse(teclado.next());
+      } catch (Exception e) { 
+      System.out.println ("Error HIREDATE");
+      }
       
         setCode(codigo);
         setName(name);

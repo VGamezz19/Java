@@ -11,12 +11,23 @@ public class Application {
     static private Clinic[] clinics = new Clinic[4];
     static private Integer comptaClinics = 0;
     static private Clinic clinicActual = null;
-
+    
+    static private Doctor[] doctors = new Doctor[4];
+    static private Integer comptaDoctors = 0;
+    static private Doctor doctorActual = null;
+    
+    static private Nurse[] Nurses = new Nurse[4];
+    static private Integer comptaNurses = 0;
+    static private Nurse nurseActual = null;
+    
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         menuPrincipal();
+        menuDoctors();
+        
     }
 
     private static void menuPrincipal() {
@@ -130,6 +141,60 @@ public class Application {
 
 
     public static void menuDoctors() {
+        Integer opcio = 0;
+        Scanner teclado = new Scanner(System.in);
+        do {
+            Integer indexSel = -1;
+            System.out.println("\nSelecciona una opció");
+            System.out.println("\n0. Sortir");
+            System.out.println("\n1. Alta");
+            System.out.println("\n2. Fixa Doctor");
+            System.out.println("\n3. Modificació");
+            System.out.println("\n4. Afegir un registre");
+            System.out.println("\n5. Llista de Doctors");
+            opcio = teclado.nextInt();
+            switch (opcio) {
+                case 0:
+                    break;
+                case 1:
+                    doctors[comptaDoctors] = Doctor.addDoctor();
+                    comptaDoctors++;
+                    break;
+                case 2:
+                    indexSel = selecDoctor();
+                    if (indexSel >= 0) {
+                        clinicActual = clinics[indexSel];
+                    } else {
+                        System.out.println("\nNo existeix aquesta clínica");
+                    }
+                    break;
+                case 3:
+                    indexSel = selectClinic();
+                    if (indexSel >= 0) {
+                        clinics[indexSel].updateClinic();
+                    } else {
+                        System.out.println("\nNo existeix aquesta clínica");
+                    }
+                    break;
+                case 4:
+                    indexSel = selectClinic();
+                    if (indexSel >= 0) {
+                        clinics[indexSel].addTrack();
+                    } else {
+                        System.out.println("\nNo existeix aquesta clínica");
+                    }
+                    break;
+                case 5:
+                    for (int i = 0; i < comptaClinics; i++) {
+                        clinics[i].showClinic();
+                    }
+                    break;
+                default:
+                    System.out.println("\nS'ha de seleccionar una opció correcta del menú.");
+                    break;
+            }
+        } while (opcio != 0);
+    }
         /*
         TODO Heu de desenvolupar el menú doctors amb les opcions que podeu veure.
         Nota: penseu que quan arribem aquí, la propietat clinicActual no és null

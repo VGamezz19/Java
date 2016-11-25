@@ -138,6 +138,10 @@ public class Department {
 
     
     public void addDoctorDepartment(Doctor doctor) {
+        
+        this.doctors[this.comptaDoctors] = Doctor.addDoctor(); //si podemos ver el codigo de addDoctor
+                                                                //click derecho, navigator, go to source
+        this.comptaDoctors ++;
     /*
     TODO 
     Paràmetres: doctor
@@ -149,6 +153,10 @@ public class Department {
 
 
     public void addNurseDepartment(Nurse nurse) {
+        
+        this.nurses[this.comptaNurses] = Nurse.addNurse(); //si podemos ver el codigo de addDoctor
+                                                             //click derecho, navigator, go to source
+        this.comptaNurses ++;
     /*
     TODO 
     Paràmetres: infermer (nurse)
@@ -160,6 +168,10 @@ public class Department {
 
 
     public void addPatientDepartment(Patient patient) {
+        
+         this.patients[this.comptaPatients] = Patient.addPatient(); //si podemos ver el codigo de addDoctor
+                                                             //click derecho, navigator, go to source
+        this.comptaPatients ++;
     /*
     TODO 
     Paràmetres: pacient (patient)

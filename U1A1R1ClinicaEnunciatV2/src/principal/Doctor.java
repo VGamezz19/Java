@@ -19,7 +19,13 @@ public class Doctor {
     private String nif;
     private String name;
     private String lastname;
-    /*
+    
+
+    public Doctor(String nif, String name, String lastname) {
+        this.nif = nif;
+        this.name = name;
+        this.lastname = lastname; 
+        /*
     TODO Constructor
     Paràmetres: String nif, String name, String lastname
     Accions:
@@ -27,12 +33,7 @@ public class Doctor {
      */
     /*
     TODO Mètodes accessors
-     */  
-
-    public Doctor(String nif, String name, String lastname) {
-        this.nif = nif;
-        this.name = name;
-        this.lastname = lastname;
+     */ 
     }
     
 

@@ -170,6 +170,10 @@ public class Clinic {
      */
 
     public void addPatient() {
+    
+        this.patients[this.comptaPatients] = Patient.addPatient(); //si podemos ver el codigo de addDoctor
+                                                             //click derecho, navigator, go to source
+        this.comptaPatients ++;
     /*
     TODO 
     Paràmetres: sense
@@ -199,6 +203,9 @@ public class Clinic {
      */
 
     public void addDepartment() {
+        this.departments[this.comptaDepartments] = Department.addDepartment(); //si podemos ver el codigo de addDoctor
+                                                             //click derecho, navigator, go to source
+        this.comptaDepartments ++;
     /*
     TODO 
     Paràmetres: sense
@@ -273,7 +280,12 @@ public class Clinic {
     
 
     public void addTrack(){
+        
+        this.tracks[this.comptaTracks] = Track.addTrack(); //si podemos ver el codigo de addDoctor
+                                                             //click derecho, navigator, go to source
+        
     /*
+        
     TODO 
     Paràmetres: sense
     Accions:
