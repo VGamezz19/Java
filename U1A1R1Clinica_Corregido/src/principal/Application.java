@@ -1,5 +1,6 @@
 package principal;
 
+import personal.Nurse;
 import java.util.Scanner;
 
 /**
