@@ -7,43 +7,10 @@ import java.util.Scanner;
  *
  * @author MiguelAngel
  */
-public class Nurse {
+public class Nurse extends Person {
 
-    private String nif;
-    private String name;
-    private String lastname;
-
-    /*
-    TODO
-    */
-    public Nurse(String nif, String name, String lastname) {
-        this.nif = nif;
-        this.name = name;
-        this.lastname = lastname;
-    }
-
-    public String getNif() {
-        return nif;
-    }
-
-    public void setNif(String nif) {
-        this.nif = nif;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public Nurse (String nif, String name, String lastname) {
+        super(nif, name, lastname);
     }
 
 

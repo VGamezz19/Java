@@ -2,6 +2,9 @@ package principal;
 
 import personal.Nurse;
 import java.util.Scanner;
+import patients.Patient;
+import personal.Doctor;
+import zones.Department;
 
 /**
  *
@@ -12,6 +15,7 @@ public class Application {
     static private Clinic[] clinics = new Clinic[4];
     static private Integer comptaClinics = 0;
     static private Clinic clinicActual = null;
+    static private Integer tipusElement = 0;
 
     /**
      * @param args the command line arguments
@@ -40,27 +44,31 @@ public class Application {
                     break;
                 case 2:
                     if (clinicActual != null) {
-                        menuDoctors();
+                        tipusElement = 1;
+                        menuElement();
                     } else {
                         System.out.println("\nPrimer s'ha de fixar la clínica al menú Gestió de clíniques");
                     }
                     break;
                 case 3:
                     if (clinicActual != null) {
-                        menuNurses();
+                        tipusElement = 2;
+                        menuElement();
                     } else {
                         System.out.println("\nPrimer s'ha de fixar la clínica al menú Gestió de clíniques");
                     }
                     break;
                 case 4:
                     if (clinicActual != null) {
-                        menuPatients();
+                        tipusElement = 3;
+                        menuElement();
                     } else {
                         System.out.println("\nPrimer s'ha de fixar la clínica al menú Gestió de clíniques");
                     }
                     break;
                 case 5:
                     if (clinicActual != null) {
+                        tipusElement = 4;
                         menuDepartments();
                     } else {
                         System.out.println("\nPrimer s'ha de fixar la clínica al menú Gestió de clíniques");
@@ -104,8 +112,8 @@ public class Application {
                 case 3:
                     indexSel = selectClinic();
                     if (indexSel >= 0) {
-                    } else {                        clinics[indexSel].updateClinic();
-
+                        clinics[indexSel].updateClinic();
+                    } else {
                         System.out.println("\nNo existeix aquesta clínica");
                     }
                     break;
@@ -129,10 +137,7 @@ public class Application {
         } while (opcio != 0);
     }
 
-    /*
-    TODO
-    */
-    public static void menuDoctors() {
+    public static void menuElement() {
         Integer opcio = 0;
         Scanner teclado = new Scanner(System.in);
         do {
@@ -140,25 +145,43 @@ public class Application {
             System.out.println("\n0. Sortir");
             System.out.println("\n1. Alta");
             System.out.println("\n2. Modificació");
-            System.out.println("\n3. Llista de doctors");
+            System.out.println("\n3. Llista");
             opcio = teclado.nextInt();
             switch (opcio) {
                 case 0:
                     break;
                 case 1:
-                    clinicActual.addDoctor();
+                    switch (tipusElement) {
+                        case 1:
+                            clinicActual.addDoctor();
+                            break;
+                        case 2:
+                            clinicActual.addNurse();
+                            break;
+                        case 3:
+                            clinicActual.addPatient();
+                            break;
+                    }
                     break;
                 case 2:
-                    Integer indexSel = clinicActual.selectDoctor();
+                    Integer indexSel = clinicActual.selectElement(tipusElement);
                     if (indexSel >= 0) {
-                        clinicActual.getDoctors()[indexSel].updateDoctor();
+                        clinicActual.getElements()[indexSel].updateElement();
                     } else {
-                        System.out.println("\nNo existeix aquest doctor");
+                        System.out.println("\nNo existeix aquest element");
                     }
                     break;
                 case 3:
-                    for (int i = 0; i < clinicActual.getComptaDoctors(); i++) {
-                        clinicActual.getDoctors()[i].showDoctor();
+                    for (int i = 0; i < clinicActual.getComptaElements(); i++) {
+                        if (clinicActual.getElements()[i] instanceof Doctor && tipusElement == 1) {
+                            clinicActual.getElements()[i].showElement();
+                        }
+                        if (clinicActual.getElements()[i] instanceof Nurse && tipusElement == 2) {
+                            clinicActual.getElements()[i].showElement();
+                        }
+                        if (clinicActual.getElements()[i] instanceof Patient && tipusElement == 3) {
+                            clinicActual.getElements()[i].showElement();
+                        }
                     }
                     break;
                 default:
@@ -168,90 +191,6 @@ public class Application {
         } while (opcio != 0);
     }
 
-    /*
-    TODO
-    */
-    public static void menuNurses() {
-        Integer opcio = 0;
-        Scanner teclado = new Scanner(System.in);
-        do {
-            System.out.println("\nSelecciona una opció");
-            System.out.println("\n0. Sortir");
-            System.out.println("\n1. Alta");
-            System.out.println("\n2. Modificació");
-            System.out.println("\n3. Llista d'infermers");
-            opcio = teclado.nextInt();
-            switch (opcio) {
-                case 0:
-                    break;
-                case 1:
-                    clinicActual.addNurse();
-                    break;
-                case 2:
-                    Integer indexSel = clinicActual.selectNurse();
-                    if (indexSel >= 0) {
-                        clinicActual.getNurses()[indexSel].updateNurse();
-                    } else {
-                        System.out.println("\nNo existeix aquest infermer");
-                    }
-                    break;
-                case 3:
-                    for (int i = 0; i < clinicActual.getComptaNurses(); i++) {
-                        clinicActual.getNurses()[i].showNurse();
-                    }
-                    break;
-                default:
-                    System.out.println("\nS'ha de seleccionar una opció correcta del menú.");
-                    break;
-            }
-        } while (opcio != 0);
-    }
-    
-    
-
-    /*
-    TODO
-    */
-    public static void menuPatients() {
-        Integer opcio = 0;
-        Scanner teclado = new Scanner(System.in);
-        do {
-            System.out.println("\nSelecciona una opció");
-            System.out.println("\n0. Sortir");
-            System.out.println("\n1. Alta");
-            System.out.println("\n2. Modificació");
-            System.out.println("\n3. Llista de pacients");
-            opcio = teclado.nextInt();
-            switch (opcio) {
-                case 0:
-                    break;
-                case 1:
-                    clinicActual.addPatient();
-                    break;
-                case 2:
-                    Integer indexSel = clinicActual.selectPatient();
-                    if (indexSel >= 0) {
-                        clinicActual.getPatients()[indexSel].updatePatient();
-                    } else {
-                        System.out.println("\nNo existeix aquesta pacient");
-                    }
-                    break;
-                case 3:
-                    for (int i = 0; i < clinicActual.getComptaPatients(); i++) {
-                        clinicActual.getPatients()[i].showPatient();
-                    }
-                    break;
-                default:
-                    System.out.println("\nS'ha de seleccionar una opció correcta del menú.");
-                    break;
-            }
-        } while (opcio != 0);
-    }
-
-    
-    /*
-    TODO
-    */
     public static void menuDepartments() {
         Integer opcio = 0;
         Scanner teclado = new Scanner(System.in);
@@ -271,17 +210,20 @@ public class Application {
                     clinicActual.addDepartment();
                     break;
                 case 2:
-                    clinicActual.addDoctorDepartment();
+                    clinicActual.addElementDepartment(1);
                     break;
                 case 3:
-                    clinicActual.addNurseDepartment();
+                    clinicActual.addElementDepartment(2);
                     break;
                 case 4:
-                    clinicActual.addPatientDepartment();
+                    clinicActual.addElementDepartment(3);
                     break;
                 case 5:
-                    for (int i = 0; i < clinicActual.getComptaDepartments(); i++) {
-                        clinicActual.getDepartments()[i].showDepartment();
+                    for (int i = 0; i < clinicActual.getComptaElements(); i++) {
+                        if (clinicActual.getElements()[i] instanceof Department) {
+                            clinicActual.getElements()[i].showElement();
+                        }
+
                     }
                     break;
                 default:
