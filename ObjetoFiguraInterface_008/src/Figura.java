@@ -25,6 +25,7 @@ abstract interface Figura {
     como un adjetivo. (codigo de programadores para entendernos)
     */
 
+    static Integer cnt = 1;
     
     abstract public double CalculaArea();
     

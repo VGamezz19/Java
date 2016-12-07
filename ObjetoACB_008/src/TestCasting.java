@@ -13,12 +13,18 @@ public class TestCasting {
       A a1 = new C();   // upcast
       System.out.println(a1);  // executa toString() de C
       B b1 = (B)a1;     // downcast ok
+      System.out.println(a1);
+      System.out.println(b1);
       C c1 = (C)b1;     // downcast ok
+      
+      System.out.println(c1);
 
       A a2 = new B();  // upcast
       System.out.println(a2);  // executa toString() de B
       B b2 = (B)a2;    // downcast ok
       C c2 = (C)a2;    // execution error ClassCastException
+
+
    }
 }
 

@@ -9,9 +9,25 @@
  * @author User
  */
 public class A {
+    
+    static int cont;
        public A() {  // Constructor
-      System.out.println("Constructor A");
+      
+      
+      this.setCount();
+      
+      System.out.println("Constructor A letras creadas:" + this.getCount());
+      
    }
+       
+    public static void setCount(){
+        A.cont++;
+    }
+    
+    public static int getCount(){
+        return A.cont;
+    }
+    
        @Override
    public String toString() {
       return "This is A";

@@ -10,8 +10,11 @@
  */
 public class C extends B {
    public C() {  // Constructor
+      
       super();
-      System.out.println("Constructor C");
+      B.setCount();
+      
+      System.out.println("Constructor C " + B.getCount());
    }
    @Override
    public String toString() {

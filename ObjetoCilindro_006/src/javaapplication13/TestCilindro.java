@@ -16,9 +16,12 @@ public class TestCilindro {
         
         Cercle c1 = new Cercle();
         Cilindro cil  = new Cilindro ();
+        
+        Cercle cil1 = new Cilindro();
 
         
-      
+      cil1.calculaArea();
+              
         System.out.println(cil.calculaArea());
         System.out.println(c1.calculaArea());
     }

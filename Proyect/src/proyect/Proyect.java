@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyect;
 
+package proyect;
 /**
  *
  * @author User
@@ -72,14 +72,9 @@ public class Proyect {
                 System.out.println("4_es una vocal"); 
                                break;
                default:
-               System.out.println("4_es una consonante"); 
-               
-           
+               System.out.println("4_es una consonante");  
         }
-        
-        
-        
-        
+            
         //--------------------------------------------------
         
         //FOR
@@ -88,8 +83,7 @@ public class Proyect {
         for (int i=0; i<10; i++) {
             System.out.println("5_valor de i:" +i);
         }
-        
-        
+   
         //--------------------------------------------------
         
         //OTRO TIPO DE FOR
@@ -107,8 +101,7 @@ public class Proyect {
             System.out.println("7_valor de n:" +n);
             n++;
         }
-        
-        
+    
         //----------------------------------------------------
         //DO
         
@@ -144,8 +137,7 @@ public class Proyect {
         if (esZero(z)) {
              System.out.println("10_El valor Z es 0 ");
         }
-        
-       
+     
 }
     
      public static boolean esZero(int unnumero) {

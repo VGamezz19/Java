@@ -93,6 +93,8 @@ public class Punto2D implements Movible {
     public void izquierda() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
 }
    
     

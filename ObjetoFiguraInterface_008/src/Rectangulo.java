@@ -12,8 +12,9 @@ public class Rectangulo implements Figura{
     
     private int ancho;
     private int costado;
-    
     public Rectangulo (){
+        
+       
        
         this.ancho = 3;
         this.costado = 4;
