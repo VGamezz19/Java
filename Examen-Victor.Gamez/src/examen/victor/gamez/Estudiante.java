@@ -5,6 +5,10 @@
  */
 package examen.victor.gamez;
 
+import java.util.ArrayList;
+import static java.util.Collections.list;
+import java.util.List;
+
 /**
  *
  * @author victor
@@ -13,7 +17,7 @@ public class Estudiante {
     
     private String non;
     private Integer edad;
-    private Asignatura[] assignaturas = new Asignatura[10];
+    private  List<Asignatura> assignaturas = new ArrayList<Asignatura>();
     private Integer numAsignaturas = 0;
 
 
@@ -45,9 +49,9 @@ public class Estudiante {
     public void addAsignatura (Asignatura asignatura) {   
         
         boolean validacion = true;
-        
+        /*
         for (int i = 0; i < numAsignaturas; i++) {
-            if (assignaturas[i].getNom().equals(asignatura.getNom())) {
+            if (assignaturas.get(i).equals(asignatura.getNom())) {
                 validacion = false;
                 break;
                 
@@ -56,6 +60,13 @@ public class Estudiante {
                 //Y el For terminara.
             }
         }
+        */
+        
+        boolean repetit = false;
+        
+             for (Asignatura a: this.assignaturas) {
+                 repetit = a.getNom().equalsIgnoreCase(asignatura.getNom());
+             }
         
         //Despues, segun el valor de Validacion, decido si insertar la asignatura
         //O nviar un mensaje de error al usuario.
@@ -63,7 +74,7 @@ public class Estudiante {
             System.out.println("Error repeticion de asignatura");
         } else {
             
-            this.assignaturas[this.numAsignaturas] = asignatura;
+            this.assignaturas.set(this.numAsignaturas, asignatura);
             this.numAsignaturas ++;
         }
         
@@ -74,7 +85,7 @@ public class Estudiante {
         Integer i = 0;
         
         for (i = 0; i < numAsignaturas; i++) {
-            mediaTotal = mediaTotal + assignaturas[i].getNota();
+            mediaTotal = mediaTotal + assignaturas.get(i).getNota();
         }
         
         return mediaTotal = mediaTotal / i;
@@ -87,7 +98,7 @@ public class Estudiante {
         String InfoAsignaturas = "";
         
         for (i = 0; i < numAsignaturas; i++) {
-            InfoAsignaturas += "\nAsignatura "+ i +"(" +assignaturas[i].getNom() + ") Nota : " + assignaturas[i].getNota() + " || "+ assignaturas[i].getAprovat(assignaturas[i].getNota());
+            InfoAsignaturas += "\nAsignatura "+ i +"(" +assignaturas.get(i).getNom() + ") Nota : " + assignaturas.get(i).getNota() + " || "+ assignaturas.get(i).getAprovat(assignaturas.get(i).getNota());
         }
         return "\nEstudiante{" + "non=" + non + ", edad=" + edad + "} " + InfoAsignaturas + "\nCon una media total de: " + this.calculMitja();
     }
